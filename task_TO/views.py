@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 
-from task_TO.forms import TaskForm, TaskFormTechnician
+from task_TO.forms import TaskForm, TaskFormTechnician, ReportForm
 from task_TO.models import Task, Image
 
 
@@ -83,6 +83,26 @@ def edit_task(request, task_id):
         formset = image_form_set(instance=task)
 
     return render(request, 'TO/edit_task.html', {'form': form, 'formset': formset, "task": task})
+
+
+@user_passes_test(lambda u: u.groups.filter(name='Technician').exists() or u.groups.filter(name='TechnicianI').exists())
+def report_task(request):
+    tasks = None
+
+    if request.method == 'POST':
+        form = ReportForm(request.POST)
+        if form.is_valid():
+            # Получаем данные из формы
+            start_date = form.cleaned_data['start_date']
+            end_date = form.cleaned_data['end_date']
+            line = form.cleaned_data['line']
+            tasks = Task.objects.filter(completion_date__range=[start_date, end_date], line=line).prefetch_related(
+                'image_set')
+
+    else:
+        form = ReportForm()
+
+    return render(request, 'TO/report_task.html', {'form': form, 'tasks': tasks})
 
 
 @login_required

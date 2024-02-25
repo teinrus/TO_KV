@@ -11,8 +11,10 @@ urlpatterns = [
     path('profileOut/', views.profile_out_view, name='profileOut'),
     path('', index_mechanics, name='index_mechanics'),
 
+    path('report_task', report_task, name='report_task'),
+
     path('create_task', create_task, name='create_task'),
     path('edit_task/<int:task_id>/', edit_task, name='edit_task'),
-    # path('delete_task/<int:task_id>/', delete_task, name='delete_task'),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
