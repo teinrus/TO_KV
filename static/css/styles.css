@@ -1,0 +1,195 @@
+/* styles.css */
+.container {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.text {
+    color: blue;
+    font-size: 18px;
+}
+/* Стили для заголовка */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Стили для формы */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+/* Стили для заголовка */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Стили для формы */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Стили для параграфов с информацией о задаче */
+form p {
+    margin-bottom: 10px;
+}
+
+/* Стили для полей ввода и текстовых областей */
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Учитывать padding и border в общей ширине */
+}
+
+/* Стили для кнопки */
+form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для блока с изображениями */
+form h2 {
+    margin-top: 20px;
+}
+
+/* Стили для формы добавления изображений */
+form .image-form {
+    margin-bottom: 20px;
+}
+
+/* Стили для полей добавления изображений */
+form .image-form input[type="file"] {
+    display: none;
+}
+
+form .image-form label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form .image-form label:hover {
+    background-color: #0056b3;
+}
+/* styles.css */
+
+/* Определение стилей для списка задач */
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    border: 3px solid #000;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.task-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.task-item a:hover {
+    color: #007bff;
+}
+
+/* Определение стилей для изображений */
+.task-images {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-image {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* styles.css */
+
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    margin-bottom: 20px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.task-item a {
+    text-decoration: none;
+    color: #333;
+}
+
+.task-details {
+    margin-bottom: 10px;
+}
+
+.task-details p {
+    margin: 5px 0;
+}
+
+.image-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.image-item {
+    margin-right: 10px;
+}
+
+.image-item img {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+/* Стили для заголовка в форме */
+form h2 {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Дополнительные стили для заголовка */
+h2 {
+    font-family: Arial, sans-serif;
+    text-align: center !important;
+}
+

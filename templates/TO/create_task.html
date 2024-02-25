@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Заголовок страницы
+{% endblock %}
+
+{% block content %}
+    <h1>Tasks ADD</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+    <script>
+        function validateForm() {
+            let taskName = document.getElementById('task_name').value;
+            let description = document.getElementById('description').value;
+
+            if (taskName.trim() === '' || description.trim() === '') {
+                alert('Поля "Task Name" и "Description" должны быть заполнены.');
+                return false; // Отменить отправку формы
+            }
+            alert("Задача успешно добавлена");
+            return true; // Разрешить отправку формы
+        }
+    </script>
+
+
+
+
+
+
+
+
+{% endblock %}
