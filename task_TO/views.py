@@ -8,14 +8,23 @@ from task_TO.models import Task, Image
 
 
 def index_mechanics(request):
-    user = request.user
+    user = list(request.user.groups.all())
+    user = [group.name for group in user]
 
-    task24 = Task.objects.filter(line='24').prefetch_related('image_set').all()
-    task25 = Task.objects.filter(line='25').prefetch_related('image_set').all()
-    task26 = Task.objects.filter(line='26').prefetch_related('image_set').all()
-    task31 = Task.objects.filter(line='31').prefetch_related('image_set').all()
-    task33 = Task.objects.filter(line='33').prefetch_related('image_set').all()
-
+    if "TechnicianI" in user:
+        task24 = Task.objects.filter(line='24').prefetch_related('image_set').all()
+        task25 = Task.objects.filter(line='25').prefetch_related('image_set').all()
+        task26 = Task.objects.filter(line='26').prefetch_related('image_set').all()
+    else:
+        task24 = []
+        task25 = []
+        task26 = []
+    if "Technician" in user:
+        task31 = Task.objects.filter(line='31').prefetch_related('image_set').all()
+        task33 = Task.objects.filter(line='33').prefetch_related('image_set').all()
+    else:
+        task31 = []
+        task33 = []
     return render(request, 'TO/index.html', {
         "task24": task24,
         'task25': task25,
@@ -42,10 +51,10 @@ def create_task(request):
     return render(request, 'TO/create_task.html', {'form': form})
 
 
-@user_passes_test(lambda u: u.groups.filter(name='Technician').exists())
+@user_passes_test(lambda u: u.groups.filter(name='Technician').exists() or u.groups.filter(name='TechnicianI').exists())
 def edit_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
-    image_form_set = inlineformset_factory(Task, Image, fields=('image',), extra=1, can_delete=True)
+    image_form_set = inlineformset_factory(Task, Image, fields=('image',), extra=3, can_delete=True)
 
     if request.method == 'POST':
         if 'delete' in request.POST:  # Если нажата кнопка удаления
@@ -74,6 +83,7 @@ def edit_task(request, task_id):
         formset = image_form_set(instance=task)
 
     return render(request, 'TO/edit_task.html', {'form': form, 'formset': formset, "task": task})
+
 
 @login_required
 def profile_view(request):

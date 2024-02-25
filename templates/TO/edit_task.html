@@ -8,7 +8,7 @@
     <h1>Edit Task</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-         {% if user.username == 'Technician' %}
+         {% if user.username == 'TechnicianI' or user.username == 'Technician' %}
             <p>Задача: {{ task.task_name }}</p>
             <p>Описание: {{ task.description }}</p>
             <p>Дата выполнения: {{ task.completion_date }}</p>
@@ -24,7 +24,7 @@
         {% endfor %}
 
         <button type="submit">Save Changes</button>
-        {% if not user.username == 'Technician' %}
+        {% if not user.username == 'TechnicianI' and not user.username == 'Technician' %}
             <button type="submit" name="delete" onclick="return confirm('Are you sure you want to delete this task?');">Delete Task</button>
         {% endif %}
     </form>
