@@ -12,16 +12,16 @@ def index_mechanics(request):
     user = [group.name for group in user]
 
     if "TechnicianI" in user:
-        task24 = Task.objects.filter(line='24').prefetch_related('image_set').all()
-        task25 = Task.objects.filter(line='25').prefetch_related('image_set').all()
-        task26 = Task.objects.filter(line='26').prefetch_related('image_set').all()
+        task24 = Task.objects.filter(line='24').exclude(status='Выполнено').prefetch_related('image_set').all()
+        task25 = Task.objects.filter(line='25').exclude(status='Выполнено').prefetch_related('image_set').all()
+        task26 = Task.objects.filter(line='26').exclude(status='Выполнено').prefetch_related('image_set').all()
     else:
         task24 = []
         task25 = []
         task26 = []
     if "Technician" in user:
-        task31 = Task.objects.filter(line='31').prefetch_related('image_set').all()
-        task33 = Task.objects.filter(line='33').prefetch_related('image_set').all()
+        task31 = Task.objects.filter(line='31').exclude(status='Выполнено').prefetch_related('image_set').all()
+        task33 = Task.objects.filter(line='33').exclude(status='Выполнено').prefetch_related('image_set').all()
     else:
         task31 = []
         task33 = []

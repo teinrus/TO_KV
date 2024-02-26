@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Edit Task</h1>
+    <h1>Редактировать задачу:</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
          {% if user.username == 'TechnicianI' or user.username == 'Technician' %}
@@ -17,7 +17,7 @@
         {% endif %}
         {{ form.as_p }}
 
-        <h2>Images</h2>
+        <h2>Фото</h2>
         {{ formset.management_form }}
         {% for form in formset %}
             {{ form.as_p }}

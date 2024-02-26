@@ -30,6 +30,7 @@
                     <th>Дата выполнения</th>
                     <th>Линия</th>
                     <th>Смена</th>
+                    <th>Статус</th>
                     <th>Название</th>
                     <th>Описание</th>
                     <th>Комментарий</th>
@@ -42,6 +43,7 @@
                         <td>{{ task.completion_date }}</td>
                         <td>{{ task.line }}</td>
                         <td>{{ task.shift_name }}</td>
+                    <td>{{ task.status }}</td>
                         <td><a href="{% url 'edit_task' task.id %}">{{ task.task_name }}</a></td>
                         <td>{{ task.description }}</td>
                         <td>{{ task.comment }}</td>
